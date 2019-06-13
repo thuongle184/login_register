@@ -1,10 +1,8 @@
-import { Component, OnInit, NgModule } from '@angular/core';
-import {usersAcc, user} from '../user';
-import { FormControl, FormGroup, Validators, MinLengthValidator } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {user} from '../user';
+import { UserService } from '../_services/user.service';
+import { LoginService } from '../_services/login.service';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -13,33 +11,26 @@ import { from } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
-
-  ngOnInit() {
-    this.loadData();
+  constructor(private router: Router, private userService: UserService, private logAnyService: LoginService) { 
   }
 
+  userName: string;
   
-  // index = 0;
- 
-  // selectedUser: user;
-  // onSelect(userAccount: user): void {
-  //   this.selectedUser = userAccount;
-    
-  // }
-
-  // deleteItem(id:number, index:number) {
-  //   usersAcc.splice(index, 1);
-  // }
-
-  // users = usersAcc;
+  ngOnInit() {
+    this.loadData(); 
+    this.userName = this.logAnyService.user_name;
+  }
 
   users: user[];
 
- loadData() {
+  loadData() {
   console.log('helllllllo');
   this.userService.getUsers().subscribe(users => this.users = users);
+  }
 
+  logOut(){
+    this.logAnyService.logout();
+    this.router.navigate(['/login']);
   }
 }
 

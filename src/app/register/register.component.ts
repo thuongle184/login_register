@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { usersAcc, user } from '../user';
+import { user } from '../user';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LocalStorageService } from 'angular-2-local-storage';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private _localStorageService: LocalStorageService) { 
+  constructor(private _localStorageService: LocalStorageService, private UserService: UserService) { 
     
   }
 
@@ -25,12 +26,11 @@ export class RegisterComponent implements OnInit {
     lastname: new FormControl('')
   });
 
-  addNewUser() {
-    usersAcc.push(
-    this.formGroupUserInput.value
-    );
-    alert("Register successfully!");
-    console.log(usersAcc);
+  addNewUserItem() {
+    if (this.UserService.addUser(this.formGroupUserInput.value)) {
+      alert("Register successfully!");
+      
+    }
   }
 
   
