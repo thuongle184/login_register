@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {usersAcc, user} from '../user';
-import { FormControl, FormGroup, Validators, MinLengthValidator } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../_services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +10,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router){
+  constructor(private router: Router, private loginService: LoginService){
 
   }
 
+  error = '';
+
   ngOnInit() {
+    this.checkIsLoged();
   }
 
   formGroupUserInput = new FormGroup({ //variables name: the same as in array
@@ -24,22 +26,27 @@ export class LoginComponent implements OnInit {
   });
 
   message: string = "";
-  onSubmit(): string {
-    //this.formGroupDitectInfor.value;
-    console.log(this.formGroupUserInput.value); 
-    for (let user of usersAcc ) {
-      if (this.formGroupUserInput.value.username == user.username && this.formGroupUserInput.value.password == user.password) {
 
-        alert("Login successfully! Go to home page ");
-        // console.log(user.username, user.password);
-        return this.message = "logged";
+  checkIsLoged() {
+    if (this.loginService.isLogged) {
+      
+      return;
+      
+    }
+    else {
+      
+    }
+  }
+
+  checkLogin() {
+    console.log(this.formGroupUserInput.value);
+    if (this.loginService.login(this.formGroupUserInput.value.username, this.formGroupUserInput.value.password  ) ) {
         this.router.navigate(['/home']);
-        
-      }      
-    }     
-    if (this.message != "logged") {  
-        alert("This account doesn't exist. ");      
+    } else {     
+       alert ('Email or password is incorrect');
     }
 
   }
+  
 }
+    
