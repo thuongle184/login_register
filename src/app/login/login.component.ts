@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   error = '';
 
   ngOnInit() {
-    this.checkIsLoged();
   }
 
   formGroupUserInput = new FormGroup({ //variables name: the same as in array
@@ -26,17 +25,6 @@ export class LoginComponent implements OnInit {
   });
 
   message: string = "";
-
-  checkIsLoged() {
-    if (this.loginService.isLogged) {
-      
-      return;
-      
-    }
-    else {
-      
-    }
-  }
 
   checkLogin() {
     console.log(this.formGroupUserInput.value);

@@ -26,10 +26,9 @@ export class RegisterComponent implements OnInit {
     lastname: new FormControl('')
   });
 
-  addNewUserItem() {
-    if (this.UserService.addUser(this.formGroupUserInput.value)) {
-      alert("Register successfully!");
-      
+  addNewUserItem(userItem: user) {
+    if (this.UserService.addUser(userItem)) {
+      alert("Register successfully! Please login to use this app_");
     }
   }
 
