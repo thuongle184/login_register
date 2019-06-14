@@ -1,6 +1,7 @@
 1: Run JSON SERVER: [vào app -> terminal -> type: "json-server --watch db.json"]
 2: Run Angular APP: [vào app -> terminal -> type: "npm start/ npm server --open"]
 
+---------------------------------------------------------------------------------------------------------
 # LoginRegister
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
