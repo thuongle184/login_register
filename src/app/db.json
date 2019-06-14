@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "Thuong",
-      "password": "1234567",
-      "firstname": "Thuong",
-      "lastname": "Le"
-    },
-    {
       "id": "2",
       "username": "Kiet",
       "password": "password",
@@ -15,18 +8,18 @@
       "lastname": "Alang"
     },
     {
-      "id": "3",
-      "username": "Tao",
-      "password": "password3",
-      "firstname": "Tao",
-      "lastname": "Ho"
+      "username": "huy",
+      "password": "1234567",
+      "firstname": "huy",
+      "lastname": "bui",
+      "id": "3"
     },
     {
-      "id": "4",
-      "username": "Nam",
-      "password": "password4",
-      "firstname": "Nam",
-      "lastname": "Dang"
+      "username": "no",
+      "password": "no",
+      "firstname": "no",
+      "lastname": "no",
+      "id": 6
     }
   ]
 }
